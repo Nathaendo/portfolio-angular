@@ -1,3 +1,83 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import 'tailwindcss';
+
+
+
+/* Ativa o scroll suave para a página inteira */
+html {
+  scroll-behavior: smooth;
+}
+
+
+/* Esconde a barra de rolagem, mas mantém a funcionalidade */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@keyframes scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-33.33%); }
+}
+
+.animate-scroll {
+  display: flex;
+  animation: scroll 20s linear infinite;
+}
+
+/* Opcional: Pausar animação ao passar o mouse */
+.animate-scroll:hover {
+  animation-play-state: paused;
+}
+
+.animate-slide {
+  /* O nome da animação é slide, aplicada apenas quando animId muda */
+  animation: slide 0.4s ease-out;
+}
+
+@keyframes slide {
+  0% { transform: translateX(20px); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+
+app-modal {
+  display: contents;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-image: url('/fundo-retro-bw.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: grayscale(100%) contrast(1.25);
+}
+
+body {
+  background-color: #18181b; /* bg-gray-800 */
+}
+
+#terminal-body::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+#terminal-body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+#terminal-body::-webkit-scrollbar-thumb {
+  background: #10b981;
+  border-radius: 2px;
+}
+
+#terminal-body::-webkit-scrollbar-thumb:hover {
+  background: #34d399;
+}

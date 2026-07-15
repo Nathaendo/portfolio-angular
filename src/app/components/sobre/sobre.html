@@ -1,0 +1,64 @@
+<section id="sobre" class="max-w-5xl mx-auto py-20 px-4">
+    <h2 class="text-3xl font-bold text-emerald-500 mb-10 text-center font-mono">> SOBRE_</h2>
+
+    <div class="max-w-6xl mx-auto mt-12 grid grid-cols-1 md:grid-cols-4 gap-4 px-4">
+    
+    <!-- Lado Esquerdo: O Terminal (ocupa 3/4 do espaço) -->
+    <div class="md:col-span-3 border border-gray-600 bg-zinc-950 p-1 shadow-2xl font-mono text-sm">
+        
+        <div class="bg-zinc-800 px-4 py-2 flex items-center border-b border-gray-600">
+        <div class="flex space-x-2">
+            <div class="w-3 h-3 rounded-full bg-emerald-400"></div>
+            <div class="w-3 h-3 rounded-full bg-yellow-400"></div>
+            <div class="w-3 h-3 rounded-full bg-red-400"></div>
+        </div>
+        <span class="mx-auto text-xs text-gray-400 tracking-widest uppercase">bash - nathan_endo</span>
+        </div>
+
+        <div id="terminal-body" class="p-6 h-[400px] overflow-y-auto" (click)="focarInput()">
+        @for (item of historico; track $index) {
+            <div class="mb-4">
+            <p><span class="text-emerald-400 font-bold">guest@portfolio:~$ </span> <span class="text-gray-200">{{ item.cmd }}</span></p>
+            @for (linha of item.output; track $index) {
+                <p class="text-gray-400 whitespace-pre">> {{ linha }}</p>
+            }
+            </div>
+        }
+
+        <div class="flex items-center mt-2">
+            <span class="text-emerald-400 font-bold mr-2">guest@portfolio:~$ </span>
+            <input 
+            #terminalInput
+            type="text" 
+            [(ngModel)]="inputAtual" 
+            (keyup.enter)="onEnter()"
+            (keydown.tab)="onTab($event)" 
+            class="bg-transparent text-gray-200 outline-none flex-1 border-none shadow-none"
+            autocomplete="off" 
+            spellcheck="false"
+            autofocus
+            >
+        </div>
+        </div>
+    </div>
+
+    <!-- Lado Direito: Legenda de Comandos -->
+    <div class="md:col-span-1 border border-gray-600 bg-zinc-950 p-6 shadow-xl font-mono text-xs text-gray-400">
+        <h3 class="text-white font-bold mb-4 border-b border-gray-700 pb-2">COMMANDS_</h3>
+        <ul class="space-y-3">
+        <li><span class="text-emerald-400">help</span> - Lista comandos</li>
+        <li><span class="text-emerald-400">cat perfil.txt</span> - Bio</li>
+        <li><span class="text-emerald-400">skills</span> - Stack técnica</li>
+        <li><span class="text-emerald-400">experiencia</span> - Carreira</li>
+        <li><span class="text-emerald-400">clear</span> - Limpar</li>
+        </ul>
+
+        <h3 class="text-white font-bold mt-8 mb-4 border-b border-gray-700 pb-2">CONTROLS_</h3>
+        <ul class="space-y-3">
+        <li><kbd class="bg-gray-700 px-1 rounded text-white">Enter</kbd> Executar</li>
+        <li><kbd class="bg-gray-700 px-1 rounded text-white">Tab</kbd> Autocomplete</li>
+        </ul>
+    </div>
+
+    </div>
+</section>
