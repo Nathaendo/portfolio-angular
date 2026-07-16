@@ -1,56 +1,54 @@
 .navbar {
-  /* 1. Posicionamento (Fixado) */
+  /* 1. Posicionamento (Fixado e Flexível) */
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 65px; /* Ligeiramente mais alta pra dar imponência */
+  
+  /* MUDANÇA AQUI: min-height em vez de height fixo */
+  min-height: 65px; 
+  padding: 10px 30px; /* Adicionado um padding vertical para quando quebrar linha */
+  
   z-index: 1000;
 
   /* 2. Efeito de Vidro (Glassmorphism) */
-  background: rgba(20, 20, 20, 0.6); /* Preto semi-transparente */
-  backdrop-filter: blur(10px); /* Desfoca o que está atrás */
-  -webkit-backdrop-filter: blur(10px); /* Safari suporte */
+  background: rgba(20, 20, 20, 0.6); 
+  backdrop-filter: blur(10px); 
+  -webkit-backdrop-filter: blur(10px); 
 
-  /* 3. A Textura de Mármore (Sutil por trás do vidro) */
-  /* Estamos usando os veios esmeralda, mas bem suaves */
+  /* 3. A Textura de Mármore */
   background-image: 
-    /* Camada 1: Veios escuros */
     repeating-linear-gradient(45deg, rgba(0, 0, 0, 0.2) 0px, rgba(0, 0, 0, 0.2) 2px, transparent 2px, transparent 12px),
-    /* Camada 2: Veios esmeralda bem leves */
     repeating-linear-gradient(-45deg, rgba(0, 255, 157, 0.05) 0px, rgba(0, 255, 157, 0.05) 1px, transparent 1px, transparent 8px);
-  
   background-size: 100px 100px;
 
   /* 4. Bordas e Decoração */
-  border-bottom: 1px solid rgba(0, 255, 157, 0.2); /* Borda neon super fina */
+  border-bottom: 1px solid rgba(0, 255, 157, 0.2); 
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
   
   /* Layout dos itens internos */
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Espaça logo de um lado e links do outro */
-  padding: 0 30px;
+  justify-content: center; /* Mudei para center para combinar com sua <ul> no HTML */
   box-sizing: border-box;
-
-  /* Transição suave caso mude de estado (opcional) */
   transition: background 0.3s ease;
 }
 
-/* Estilização dos links dentro da navbar (para contrastar) */
+/* Estilização dos links dentro da navbar */
 .navbar a {
-  color: #e0e0e0; /* Cinza claro */
+  color: #e0e0e0; 
   text-decoration: none;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-weight: 500;
   padding: 5px 10px;
   border-radius: 4px;
-  transition:all 0.3s ease;
+  transition: all 0.3s ease;
+  white-space: nowrap; /* Impede que o texto de um único link quebre ao meio */
 }
 
-/* Efeito hover nos links (Um verde neon no hover fica legal) */
+/* Efeito hover nos links */
 .navbar a:hover {
   color: #fff;
-  background-color: rgba(0, 255, 157, 0.1); /* Fundo verde bem transparente no hover */
-  text-shadow: 0 0 8px rgba(0, 255, 157, 0.8); /* Brilho no texto */
+  background-color: rgba(0, 255, 157, 0.1); 
+  text-shadow: 0 0 8px rgba(0, 255, 157, 0.8); 
 }

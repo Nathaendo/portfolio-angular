@@ -27,8 +27,12 @@ export class SobreComponent implements OnInit {
   }
 
   // --- Lógica do Tab Autocomplete ---
-  onTab(event: Event) {
-    event.preventDefault();
+  onTab(event?: Event) {
+    // Garante que a página não perca o foco se for pressionado no teclado
+    if (event) {
+      event.preventDefault();
+    }
+    
     const digitado = this.inputAtual.toLowerCase();
     if (!digitado) return;
 

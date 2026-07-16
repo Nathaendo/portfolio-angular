@@ -36,9 +36,26 @@
             class="bg-transparent text-gray-200 outline-none flex-1 border-none shadow-none"
             autocomplete="off" 
             spellcheck="false"
+            autocapitalize="none" 
+            enterkeyhint="go"
             autofocus
             >
         </div>
+
+        <!-- MUDANÇA AQUI: Botões de ação apenas para Mobile -->
+        <div class="flex md:hidden gap-3 mt-4 justify-end">
+            <button 
+                (click)="onTab($event)" 
+                class="bg-zinc-800 text-gray-300 border border-gray-600 px-4 py-1.5 rounded text-xs active:bg-zinc-700">
+                [ TAB ]
+            </button>
+            <button 
+                (click)="onEnter()" 
+                class="bg-emerald-900/50 text-emerald-400 border border-emerald-700 px-4 py-1.5 rounded text-xs active:bg-emerald-800/80">
+                [ ENTER ]
+            </button>
+        </div>
+
         </div>
     </div>
 
